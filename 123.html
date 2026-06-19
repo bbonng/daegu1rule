@@ -1,0 +1,532 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>대구일중학교 학생생활규정 전부개정 심의자료</title>
+<style>
+  @import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css');
+
+  :root{
+    --ink:#10243e;        /* deep navy ink */
+    --ink-2:#1f4e9c;      /* committee blue */
+    --paper:#f7f5ef;      /* warm document paper */
+    --paper-2:#ece8dd;
+    --line:#c9cdd6;
+    --gray:#5a6675;
+    --red:#b3261e;        /* 신설 */
+    --blue:#1f4e9c;       /* 수정 */
+    --slate:#6b7480;      /* 삭제 */
+    --amber:#c5751a;      /* 통합 */
+    --gold:#b08522;
+    --shadow:0 24px 60px -28px rgba(16,36,62,.45);
+    --maxw: 1180px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html,body{height:100%}
+  body{
+    font-family:'Pretendard',-apple-system,sans-serif;
+    background:
+      radial-gradient(1200px 700px at 80% -10%, rgba(31,78,156,.10), transparent 60%),
+      radial-gradient(900px 600px at 0% 110%, rgba(176,133,34,.10), transparent 55%),
+      var(--paper);
+    color:var(--ink);
+    overflow:hidden;
+    -webkit-font-smoothing:antialiased;
+  }
+
+  /* ===== Deck frame ===== */
+  .deck{position:fixed;inset:0;display:flex;align-items:center;justify-content:center}
+  .slide{
+    position:absolute;inset:0;
+    display:none;
+    padding: clamp(28px,4.5vw,72px);
+    opacity:0;
+    flex-direction:column;
+    justify-content:center;
+  }
+  .slide.active{display:flex;animation:slideIn .65s cubic-bezier(.16,.84,.36,1) both}
+  .slide.active .reveal{animation:rise .7s cubic-bezier(.16,.84,.36,1) both}
+  .reveal:nth-child(1){animation-delay:.05s}
+  .reveal:nth-child(2){animation-delay:.13s}
+  .reveal:nth-child(3){animation-delay:.21s}
+  .reveal:nth-child(4){animation-delay:.29s}
+  .reveal:nth-child(5){animation-delay:.37s}
+  .reveal:nth-child(6){animation-delay:.45s}
+  @keyframes slideIn{from{opacity:0;transform:translateY(14px) scale(.992)}to{opacity:1;transform:none}}
+  @keyframes rise{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:none}}
+
+  .inner{width:100%;max-width:var(--maxw);margin:0 auto}
+
+  /* ===== Typography ===== */
+  .eyebrow{
+    font-size:clamp(11px,1vw,13px);letter-spacing:.28em;font-weight:700;
+    color:var(--ink-2);text-transform:uppercase;margin-bottom:18px;
+    display:flex;align-items:center;gap:12px;
+  }
+  .eyebrow::before{content:"";width:34px;height:2px;background:var(--gold)}
+  h1{font-size:clamp(30px,5.4vw,68px);line-height:1.08;font-weight:800;letter-spacing:-.02em}
+  h2{font-size:clamp(24px,3.6vw,44px);line-height:1.14;font-weight:800;letter-spacing:-.02em;margin-bottom:6px}
+  .sub{font-size:clamp(14px,1.5vw,19px);color:var(--gray);font-weight:500;line-height:1.6}
+  p{line-height:1.7}
+
+  /* ===== Cover ===== */
+  .cover-tag{font-size:clamp(13px,1.4vw,16px);color:var(--gray);font-weight:600;margin-top:26px;letter-spacing:.02em}
+  .cover-rule{height:3px;width:120px;background:linear-gradient(90deg,var(--ink-2),var(--gold));margin:30px 0;border-radius:2px}
+  .cover-meta{display:flex;flex-wrap:wrap;gap:10px 26px;margin-top:34px;font-size:14px;color:var(--gray);font-weight:600}
+  .cover-meta b{color:var(--ink)}
+  .stamp{
+    position:absolute;right:clamp(28px,5vw,90px);top:clamp(40px,8vh,90px);
+    width:clamp(96px,12vw,140px);height:clamp(96px,12vw,140px);
+    border:2.5px solid rgba(179,38,30,.55);border-radius:50%;
+    display:flex;align-items:center;justify-content:center;text-align:center;
+    color:rgba(179,38,30,.7);font-weight:800;font-size:clamp(12px,1.3vw,15px);
+    transform:rotate(-9deg);letter-spacing:.04em;line-height:1.4;
+    animation:stampIn 1.1s .5s cubic-bezier(.2,1.4,.4,1) both;
+  }
+  @keyframes stampIn{0%{opacity:0;transform:rotate(-9deg) scale(2.2)}60%{opacity:1}100%{opacity:1;transform:rotate(-9deg) scale(1)}}
+
+  /* ===== big stats ===== */
+  .stat-row{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;margin-top:8px}
+  .stat{
+    background:rgba(255,255,255,.55);border:1px solid var(--line);border-radius:16px;
+    padding:24px 22px;backdrop-filter:blur(6px);position:relative;overflow:hidden;
+  }
+  .stat::after{content:"";position:absolute;left:0;top:0;bottom:0;width:4px;background:var(--ink-2)}
+  .stat.red::after{background:var(--red)} .stat.blue::after{background:var(--blue)}
+  .stat.slate::after{background:var(--slate)} .stat.amber::after{background:var(--amber)}
+  .stat .num{font-size:clamp(34px,4.4vw,56px);font-weight:800;letter-spacing:-.03em;line-height:1}
+  .stat .lab{font-size:13px;color:var(--gray);font-weight:600;margin-top:10px}
+  .count{font-variant-numeric:tabular-nums}
+
+  /* ===== generic cards ===== */
+  .grid{display:grid;gap:16px}
+  .g2{grid-template-columns:1fr 1fr}
+  .g3{grid-template-columns:repeat(3,1fr)}
+  .card{
+    background:rgba(255,255,255,.6);border:1px solid var(--line);border-radius:14px;
+    padding:22px 22px;position:relative;
+  }
+  .card h3{font-size:clamp(16px,1.7vw,20px);font-weight:800;margin-bottom:8px;display:flex;gap:10px;align-items:baseline}
+  .card p{font-size:clamp(13px,1.35vw,15px);color:var(--gray);font-weight:500}
+  .chip{
+    display:inline-block;font-size:11px;font-weight:800;letter-spacing:.04em;
+    padding:3px 10px;border-radius:999px;color:#fff;flex:none;
+  }
+  .c-red{background:var(--red)} .c-blue{background:var(--blue)}
+  .c-slate{background:var(--slate)} .c-amber{background:var(--amber)}
+  .legal{color:var(--red);font-weight:800}
+
+  /* ===== legend bar ===== */
+  .legend{display:flex;flex-wrap:wrap;gap:10px 18px;margin-top:22px;font-size:13px;font-weight:600;color:var(--gray)}
+  .legend span{display:flex;align-items:center;gap:7px}
+  .dot{width:11px;height:11px;border-radius:3px;display:inline-block}
+
+  /* ===== flow (5 → 1) ===== */
+  .flow{display:flex;align-items:stretch;gap:10px;margin-top:6px;flex-wrap:wrap}
+  .flow .old{flex:1;min-width:150px;display:flex;flex-direction:column;gap:9px}
+  .oldbox{background:rgba(255,255,255,.62);border:1px solid var(--line);border-radius:11px;padding:13px 15px;font-weight:700;font-size:clamp(13px,1.3vw,15px)}
+  .oldbox small{display:block;color:var(--gray);font-weight:600;font-size:11px;margin-top:3px}
+  .arrow{display:flex;align-items:center;justify-content:center;color:var(--ink-2);font-size:40px;font-weight:300}
+  .merged{
+    flex:1;min-width:200px;background:linear-gradient(160deg,var(--ink),#16335a);
+    color:#fff;border-radius:16px;padding:26px 24px;display:flex;flex-direction:column;justify-content:center;box-shadow:var(--shadow)
+  }
+  .merged .big{font-size:clamp(26px,3.2vw,40px);font-weight:800;line-height:1.1}
+  .merged .lab{color:#c7d4ea;font-size:14px;font-weight:600;margin-top:10px}
+  .merged .gold{color:var(--gold);font-weight:800}
+
+  /* ===== mapping table ===== */
+  table{width:100%;border-collapse:collapse;font-size:clamp(12.5px,1.3vw,15px)}
+  thead th{background:var(--ink);color:#fff;font-weight:700;text-align:left;padding:12px 16px;font-size:13px;letter-spacing:.02em}
+  thead th:first-child{border-top-left-radius:10px}
+  thead th:last-child{border-top-right-radius:10px}
+  tbody td{padding:11px 16px;border-bottom:1px solid var(--line);font-weight:500;background:rgba(255,255,255,.45)}
+  tbody tr:last-child td{border-bottom:none}
+  td .art{font-weight:800;color:var(--ink)}
+  .tag-sm{font-size:11px;font-weight:800;padding:2px 8px;border-radius:6px;color:#fff}
+
+  /* ===== Q&A ===== */
+  .qa{background:rgba(255,255,255,.6);border:1px solid var(--line);border-left:4px solid var(--ink-2);border-radius:12px;padding:20px 24px}
+  .qa .q{font-weight:800;font-size:clamp(15px,1.6vw,18px);margin-bottom:8px;color:var(--ink)}
+  .qa .q::before{content:"Q. ";color:var(--ink-2)}
+  .qa .a{font-size:clamp(13.5px,1.4vw,16px);color:var(--gray);font-weight:500;line-height:1.65}
+  .qa .a::before{content:"A. ";color:var(--gold);font-weight:800}
+
+  /* closing */
+  .close-list{display:grid;gap:14px;margin-top:8px;counter-reset:cl}
+  .close-list li{list-style:none;display:flex;gap:16px;align-items:flex-start;font-size:clamp(15px,1.7vw,20px);font-weight:600;line-height:1.5}
+  .close-list li::before{counter-increment:cl;content:counter(cl);flex:none;width:34px;height:34px;border-radius:50%;background:var(--ink);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:15px}
+  .close-list b{color:var(--ink-2)}
+
+  /* ===== chrome: progress, nav, counter ===== */
+  .progress{position:fixed;top:0;left:0;height:4px;background:linear-gradient(90deg,var(--ink-2),var(--gold));z-index:50;transition:width .5s cubic-bezier(.16,.84,.36,1)}
+  .counter{position:fixed;bottom:22px;right:26px;font-size:13px;font-weight:700;color:var(--gray);z-index:50;letter-spacing:.04em}
+  .counter b{color:var(--ink);font-size:16px}
+  .nav{position:fixed;bottom:18px;left:50%;transform:translateX(-50%);display:flex;gap:8px;z-index:50}
+  .nav button{
+    width:40px;height:40px;border-radius:11px;border:1px solid var(--line);
+    background:rgba(255,255,255,.8);color:var(--ink);font-size:18px;cursor:pointer;
+    display:flex;align-items:center;justify-content:center;transition:.18s;backdrop-filter:blur(6px)
+  }
+  .nav button:hover{background:var(--ink);color:#fff;border-color:var(--ink);transform:translateY(-2px)}
+  .nav button:disabled{opacity:.35;cursor:default;transform:none;background:rgba(255,255,255,.8);color:var(--ink)}
+  .brandfoot{position:fixed;bottom:24px;left:26px;font-size:12px;font-weight:600;color:var(--gray);z-index:50;letter-spacing:.02em}
+
+  .hint{position:fixed;top:18px;left:50%;transform:translateX(-50%);font-size:12px;color:var(--gray);font-weight:600;z-index:50;background:rgba(255,255,255,.7);padding:5px 14px;border-radius:999px;border:1px solid var(--line);transition:opacity .6s}
+
+  @media (max-width:760px){
+    .stat-row{grid-template-columns:1fr 1fr}
+    .g2,.g3{grid-template-columns:1fr}
+    .flow{flex-direction:column}
+    .arrow{transform:rotate(90deg);font-size:30px}
+    .stamp{display:none}
+    thead th,tbody td{padding:9px 10px;font-size:12px}
+  }
+  @media (prefers-reduced-motion:reduce){
+    *{animation:none!important;transition:none!important}
+  }
+</style>
+</head>
+<body>
+<div class="progress" id="progress"></div>
+<div class="hint" id="hint">← → 또는 클릭으로 이동 · F 전체화면</div>
+
+<div class="deck" id="deck">
+
+  <!-- 1. Cover -->
+  <section class="slide active">
+    <div class="stamp reveal">전부개정<br>제안</div>
+    <div class="inner">
+      <div class="eyebrow reveal">생활규정 제·개정위원회 협의자료</div>
+      <h1 class="reveal">학생생활규정<br>전부개정 제안</h1>
+      <div class="cover-rule reveal"></div>
+      <p class="cover-tag reveal">분산된 5개 규정을 하나로 — 118개 조문 단일 체계로 통합하고<br>2026년 개정 법령을 빠짐없이 반영한 정비안, 함께 검토합니다</p>
+      <div class="cover-meta reveal">
+        <span><b>대구일중학교</b> 생활안전부</span>
+        <span>협의일 <b>2026. 6. 19. (금) 15:00</b></span>
+        <span>근거 <b>초·중등교육법 제8조 / 시행령 제9조</b></span>
+      </div>
+    </div>
+  </section>
+
+  <!-- 2. 한눈에 (stats) -->
+  <section class="slide">
+    <div class="inner">
+      <div class="eyebrow reveal">한눈에 보는 개정 규모</div>
+      <h2 class="reveal">무엇이, 얼마나 바뀌는가</h2>
+      <p class="sub reveal" style="margin-bottom:30px">5종으로 흩어져 있던 규정을 하나의 「학생생활규정」으로 통합하고, 조문을 일련번호로 재정비했습니다.</p>
+      <div class="stat-row">
+        <div class="stat amber reveal"><div class="num"><span class="count" data-to="5">0</span>→1</div><div class="lab">분산 규정의 단일 통합</div></div>
+        <div class="stat blue reveal"><div class="num"><span class="count" data-to="118">0</span></div><div class="lab">단일 체계 전체 조문 수</div></div>
+        <div class="stat red reveal"><div class="num"><span class="count" data-to="12">0</span></div><div class="lab">법령 의무 핵심 신설 조항</div></div>
+        <div class="stat slate reveal"><div class="num"><span class="count" data-to="25">0</span></div><div class="lab">징계기준표 항목 (제26조)</div></div>
+      </div>
+      <div class="legend reveal">
+        <span><i class="dot" style="background:var(--red)"></i>신설 — 종전에 없던 조항(상당수 법령 의무)</span>
+        <span><i class="dot" style="background:var(--blue)"></i>수정 — 내용·체계·인용법령 정비</span>
+        <span><i class="dot" style="background:var(--slate)"></i>삭제 — 중복·실효·위법 인용 정비</span>
+        <span><i class="dot" style="background:var(--amber)"></i>통합 — 위치 이동·단일화</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- 3. 왜 지금 (필요성) -->
+  <section class="slide">
+    <div class="inner">
+      <div class="eyebrow reveal">개정의 배경과 필요성</div>
+      <h2 class="reveal">왜 지금, 전부개정인가</h2>
+      <p class="sub reveal" style="margin-bottom:26px">2023년 이후 전면 정비가 없어 상위 법령·지침과 어긋나는 조항이 누적되었습니다.</p>
+      <div class="grid g2">
+        <div class="card reveal"><h3>① 법령 개정 미반영</h3><p>「초·중등교육법」 제18조의5, 제20조의2~제20조의7 신설·강화 사항이 반영되지 않아 현행 법령에 부합하지 않는 상태가 지속됩니다.</p></div>
+        <div class="card reveal"><h3>② 규정의 분산</h3><p>관련 규정이 5개로 나뉘고 각 규정이 모두 제1조부터 다시 시작해, 조문을 찾아 적용하기 어렵습니다.</p></div>
+        <div class="card reveal"><h3>③ 중복·충돌</h3><p>규정 간 동일·유사 내용이 중복되어 어느 규정을 적용할지 혼란이 있고, 일부 조항은 서로 충돌합니다.</p></div>
+        <div class="card reveal"><h3>④ 위법 소지</h3><p>법령상 근거가 사라졌거나 현행 법령과 어긋나는 표현이 남아 있어, 실무 적용 시 위법 소지가 있습니다.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 4. 통합 (5 → 1 flow) -->
+  <section class="slide">
+    <div class="inner">
+      <div class="eyebrow reveal">개정의 기본 방향 ①  통합</div>
+      <h2 class="reveal">5개 규정 → 하나의 단일 규정</h2>
+      <p class="sub reveal" style="margin-bottom:26px">내용을 누락한 것이 아니라 <b style="color:var(--ink)">체계를 통합</b>한 것입니다. 중복은 제거하고, 조문은 누락 없이 재배치했습니다.</p>
+      <div class="flow">
+        <div class="old">
+          <div class="oldbox reveal">학생생활규정<small>총칙·생활규범</small></div>
+          <div class="oldbox reveal">학생생활교육규정<small>위원회·징계</small></div>
+          <div class="oldbox reveal">훈육·훈계 교육규정<small>훈육·훈계</small></div>
+          <div class="oldbox reveal">복장 및 용의 규정<small>복장·두발·화장</small></div>
+          <div class="oldbox reveal">장애학생 인권보호규정<small>차별금지·교육권</small></div>
+        </div>
+        <div class="arrow reveal">→</div>
+        <div class="merged reveal">
+          <div class="big">대구일중학교<br>학생생활규정</div>
+          <div class="lab">총 <span class="gold">118개 조문</span> 및 부칙 — 일련번호 단일 체계</div>
+          <div class="lab" style="margin-top:14px;border-top:1px solid rgba(255,255,255,.2);padding-top:14px">부칙 제3조에서 종전 5개 규정을 <span class="gold">명시적으로 폐지</span>하여 규정 충돌을 방지합니다.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 5. 4 directions -->
+  <section class="slide">
+    <div class="inner">
+      <div class="eyebrow reveal">개정의 기본 방향</div>
+      <h2 class="reveal">네 가지 성격으로 구분</h2>
+      <p class="sub reveal" style="margin-bottom:26px">모든 변경은 다음 네 갈래 중 하나에 속합니다.</p>
+      <div class="grid g2">
+        <div class="card reveal" style="border-left:4px solid var(--amber)"><h3><span class="chip c-amber">통합</span>분산 규정의 단일화</h3><p>종전 5개 규정을 하나의 규정 체계로 합치며 위치를 재배치했습니다.</p></div>
+        <div class="card reveal" style="border-left:4px solid var(--red)"><h3><span class="chip c-red">신설</span>법령 의무의 반영</h3><p>「초·중등교육법」 개정으로 의무화된 사항을 신규 조항으로 반영했습니다. 학교의 임의 추가가 아닙니다.</p></div>
+        <div class="card reveal" style="border-left:4px solid var(--blue)"><h3><span class="chip c-blue">수정</span>중복·실효 정비</h3><p>상위 법령과 중복되거나 실효성을 잃은 조항을 정비·삭제했습니다.</p></div>
+        <div class="card reveal" style="border-left:4px solid var(--gold)"><h3><span class="chip" style="background:var(--gold)">위임</span>세부기준 위임</h3><p>변경 가능성이 큰 세부기준은 학교의 장이 따로 정하도록 위임했습니다.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 6. 핵심 신설 (법령 의무) -->
+  <section class="slide">
+    <div class="inner">
+      <div class="eyebrow reveal">핵심 신설 ★ 법령 의무사항</div>
+      <h2 class="reveal">반드시 반영해야 하는 신설 조항</h2>
+      <p class="sub reveal" style="margin-bottom:22px">아래는 종전 규정에 전혀 없던 내용으로, 모두 법령·고시 개정에 따라 <b class="legal">반영이 요구되는 사항</b>입니다.</p>
+      <table class="reveal">
+        <thead><tr><th style="width:24%">개정안 조문</th><th style="width:26%">근거</th><th>내용</th></tr></thead>
+        <tbody>
+          <tr><td><span class="art">제75조</span> 정서·행동 지원</td><td>법 제18조의5 / 시행령 제31조의5</td><td>정서·행동 위기학생 지원 근거</td></tr>
+          <tr><td><span class="art">제78조</span> 방어·보호 제지</td><td>법 제20조의2③</td><td>물리적 제지 근거·요건·한계 명시</td></tr>
+          <tr><td><span class="art">제81~84조</span> 개별학생교육지원</td><td>법 제20조의2 · 고시</td><td>분리·교육지원, 지원실 설치·안전, 보호자 인계</td></tr>
+          <tr><td><span class="art">제90조</span> 정당한 생활지도 보호</td><td>법 제20조의6</td><td>정당한 지도의 아동학대 책임 면제(교권 보호)</td></tr>
+          <tr><td><span class="art">제101~105조</span> 스마트기기 제한</td><td>법 제20조의5~7</td><td>교내 사용·소지 제한·수거·예외·교육</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- 7. 자체 신설 (징계기준표/재심의) -->
+  <section class="slide">
+    <div class="inner">
+      <div class="eyebrow reveal">핵심 신설  학교 자체 안전장치</div>
+      <h2 class="reveal">예측가능성과 권리구제를 위한 신설</h2>
+      <div class="grid g2" style="margin-top:18px">
+        <div class="card reveal" style="border-left:4px solid var(--red)">
+          <h3><span class="chip c-red">신설</span>제26조 · 징계기준표</h3>
+          <p><b style="color:var(--ink);font-size:30px;display:block;margin:6px 0">25개 항목</b>항목별로 적용 가능한 징계 종류와 양정의 상한·하한을 제시합니다. 위원회는 경중·교육적 정상을 참작해 가중·경감할 수 있어, <b style="color:var(--ink)">자의적 적용을 방지</b>하고 학생·보호자에게 예측가능성을 제공합니다.</p>
+        </div>
+        <div class="card reveal" style="border-left:4px solid var(--red)">
+          <h3><span class="chip c-red">신설</span>제29조 · 재심의</h3>
+          <p>법정 재심(법 제18조의2)은 <b style="color:var(--ink)">퇴학에만</b> 적용되어 의무교육대상자인 중학생에게는 불복절차가 없습니다. 그 공백을 보완하는 최소한의 절차적 안전장치로, <b style="color:var(--ink)">절차상 중대한 하자·명백한 사실오인</b>에 한정하고 14일 내 신청·1회로 제한합니다.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 8. 삭제·정비 -->
+  <section class="slide">
+    <div class="inner">
+      <div class="eyebrow reveal">주요 삭제 사항</div>
+      <h2 class="reveal">실제로 사라진 조항 — 학생 자치 강화 방향</h2>
+      <table class="reveal" style="margin-top:18px">
+        <thead><tr><th style="width:42%">삭제된 종전 조항</th><th>사유</th></tr></thead>
+        <tbody>
+          <tr><td>학생회운영규정 제5조 <span class="art">교육기구</span></td><td>교직원으로 구성하던 학생회 교육위원회를 삭제 — 자치활동 통제기구를 두지 않고 학생 주도성 강화</td></tr>
+          <tr><td>바른생활부 임명규정 제4·10·11조</td><td>바른생활부장 직위·교육일지 매일 기록·교육교사 지정을 삭제 — 위계·기록 부담 정비</td></tr>
+          <tr><td>학생생활규정 제34조 <span class="art">진로교육</span></td><td>표준화검사·진학정보 등 독립 진로교육 조항 삭제 — '진로'는 제72조(생활지도 범위)에 포섭</td></tr>
+          <tr><td>제정·개정절차규정 제5조 <span class="art">개정안 발의</span></td><td>발의 정족수 조항 삭제 — 제9~11조 절차로 간소화</td></tr>
+          <tr><td>학생생활규정 제12조(훈육)의 제지·분리 항</td><td>비대한 훈육 조항에서 물리적 제지(제4·5항)·분리·가정학습(제6·7항)을 떼어내 제78조·제81~84조로 신설·이관</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- 9. 위임·정비 -->
+  <section class="slide">
+    <div class="inner">
+      <div class="eyebrow reveal">주요 위임 · 정비 사항</div>
+      <h2 class="reveal">유연성을 위한 위임, 연속성을 위한 정비</h2>
+      <div class="grid g3" style="margin-top:18px">
+        <div class="card reveal"><h3>봉사·특별교육 기관</h3><p>봉사 위탁기관·특별교육 이수기관은 사안의 사유에 따라 <b style="color:var(--ink)">학교가 지정하여 운영</b>합니다. <span style="color:var(--gray)">(제27조)</span></p></div>
+        <div class="card reveal"><h3>학생회장 선거 시기<br><span style="font-size:13px;color:var(--ink-2)">제46조</span></h3><p>선거를 <b style="color:var(--ink)">전년도 12월</b>로 변경해 신학년도 전 인수인계를 마치고, <b style="color:var(--ink)">학생참여예산제 편성·집행</b> 등 자치활동을 학년 초부터 안정적으로 운영하도록 했습니다.</p></div>
+        <div class="card reveal"><h3>동아리 운영</h3><p>동아리 운영의 세부 내용은 <b style="color:var(--ink)">별도 규정에 위임</b>합니다. <span style="color:var(--gray)">(제95조제5항)</span></p></div>
+      </div>
+      <div class="card reveal" style="margin-top:16px;background:rgba(31,78,156,.06);border-color:rgba(31,78,156,.25)">
+        <h3 style="color:var(--ink-2)">학생 주도성 강화</h3>
+        <p>교직원으로 구성하던 학생회 교육위원회 등 자치활동 통제 기구를 삭제하고, 학급자치회의를 명문화하여 학생 주도성을 강화했습니다.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 10. 장별 구조 -->
+  <section class="slide">
+    <div class="inner">
+      <div class="eyebrow reveal">단일 규정의 구조</div>
+      <h2 class="reveal">118개 조문, 어떻게 배치되었나</h2>
+      <table class="reveal" style="margin-top:16px">
+        <thead><tr><th style="width:30%">장(章)</th><th style="width:20%">조문</th><th>핵심 내용</th></tr></thead>
+        <tbody>
+          <tr><td class="art">1. 총칙·제정개정 절차</td><td>제1~13조</td><td>명칭·목적·적용, 위원회·심의·공포 절차 통합</td></tr>
+          <tr><td class="art">2. 생활교육위원회·징계</td><td>제14~31조</td><td>위원회 운영, 징계 종류·기준표·재심의·가중경감</td></tr>
+          <tr><td class="art">3. 훈육·훈계</td><td>제32~37조</td><td>체벌 금지, 교육적 과업, 금지 유형·장소</td></tr>
+          <tr><td class="art">4. 학생자치활동</td><td>제38~69조</td><td>학생회·선거·대의원회·학급회·바른생활부</td></tr>
+          <tr><td class="art">5. 학생 생활규범</td><td>제70~118조</td><td>생활지도·스마트기기·복장·장애학생 인권 <span class="tag-sm" style="background:var(--red)">법령 신설 집중</span></td></tr>
+        </tbody>
+      </table>
+      <p class="sub reveal" style="margin-top:18px">시행령 제9조제1항의 학칙 필수 기재사항(수업·학급·징계·자치활동·개정절차 등)을 <b style="color:var(--ink)">모두 충족</b>합니다.</p>
+    </div>
+  </section>
+
+  <!-- 11. Q&A 1 -->
+  <section class="slide">
+    <div class="inner">
+      <div class="eyebrow reveal">나올 법한 질문 · 답변 ①</div>
+      <h2 class="reveal">위원회에서 나올 수 있는 질문들</h2>
+      <div class="grid" style="margin-top:18px;gap:14px">
+        <div class="qa reveal">
+          <div class="q">5개 규정을 하나로 합쳤는데 내용이 누락된 것 아닌가?</div>
+          <div class="a">누락이 아니라 체계 통합입니다. 중복 조항은 제거하고 누락 없이 재배치했으며, 부칙 제3조에서 종전 규정을 명시적으로 폐지해 충돌을 방지했습니다.</div>
+        </div>
+        <div class="qa reveal">
+          <div class="q">징계기준표를 두면 오히려 기계적으로 적용되지 않나?</div>
+          <div class="a">기준표는 양정의 상한·하한과 가능한 징계 종류를 제시할 뿐, 위원회가 경중·교육적 정상을 참작해 가중·경감(제30조)할 수 있습니다. 오히려 자의적 적용을 막고 예측가능성을 줍니다.</div>
+        </div>
+        <div class="qa reveal">
+          <div class="q">재심의는 법정 재심과 무엇이 다른가?</div>
+          <div class="a">법정 재심은 퇴학에만 적용되어 중학생에게는 불복절차가 없습니다. 제29조는 그 공백을 보완하는 자체 안전장치로, 절차상 중대한 하자·명백한 사실오인에 한정합니다.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 12. Q&A 2 -->
+  <section class="slide">
+    <div class="inner">
+      <div class="eyebrow reveal">나올 법한 질문 · 답변 ②</div>
+      <h2 class="reveal">권리·비례성에 관한 질문들</h2>
+      <div class="grid" style="margin-top:18px;gap:14px">
+        <div class="qa reveal">
+          <div class="q">스마트기기 제한(제101조 등)은 학생 권리를 과도하게 침해하지 않나?</div>
+          <div class="a">법 제20조의5~7이 제한의 근거를 명시하며, 제103조에서 교육목적·긴급상황·장애 및 건강상 필요 등 예외를 두어 비례성을 확보했습니다. 법령 반영을 절차적 보호와 함께 규정한 것입니다.</div>
+        </div>
+        <div class="qa reveal">
+          <div class="q">개정 폭이 큰데 굳이 지금 전부개정을 해야 하나?</div>
+          <div class="a">2023년 이후 누적된 법령 개정을 한 번에 반영하고 분산 규정을 통합하므로 폭이 커 보일 뿐입니다. 신설 대부분이 법령 의무사항으로, 개정하지 않으면 현행 법령에 부합하지 않는 상태가 지속됩니다.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 13. 결론 -->
+  <section class="slide">
+    <div class="inner">
+      <div class="eyebrow reveal">제안의 정리</div>
+      <h2 class="reveal">이런 방향으로 가려고 합니다</h2>
+      <ol class="close-list">
+        <li class="reveal"><span><b>법령 반영</b> — 「초·중등교육법」 및 시행령 개정사항을 빠짐없이 반영</span></li>
+        <li class="reveal"><span><b>체계 통합</b> — 분산된 5개 규정을 단일 118조 체계로 통합</span></li>
+        <li class="reveal"><span><b>중복 정비</b> — 상위 법령과 중복·실효된 조항을 정리</span></li>
+        <li class="reveal"><span><b>세부 위임</b> — 변경 가능성이 큰 기준은 학교의 장에게 위임</span></li>
+      </ol>
+      <div class="cover-rule reveal" style="margin:30px 0 18px"></div>
+      <p class="sub reveal">신설 조항의 대부분은 법령상 반영이 요구되는 <b style="color:var(--ink)">의무사항</b>이라, 통합·정비 자체는 미룰 수 없는 일로 봅니다. 다만 세부 내용은 <b style="color:var(--ink)">위원들의 의견을 더 들어 다듬고자</b> 합니다.</p>
+    </div>
+  </section>
+
+  <!-- 14. 함께 볼 지점 (열린 결말) -->
+  <section class="slide">
+    <div class="inner">
+      <div class="eyebrow reveal">함께 의견을 나누고 싶은 지점</div>
+      <h2 class="reveal">여기서부터는 같이 정했으면 합니다</h2>
+      <p class="sub reveal" style="margin-bottom:24px">큰 방향은 위와 같이 제안드리되, 아래는 위원회의 의견에 따라 충분히 달라질 수 있는 부분입니다.</p>
+      <div class="grid g3">
+        <div class="card reveal"><h3>징계기준표 수위<br><span style="font-size:13px;color:var(--ink-2)">제26조</span></h3><p>25개 항목의 양정 상한·하한이 우리 학교 실정에 맞는지, 더하거나 덜 항목이 있는지.</p></div>
+        <div class="card reveal"><h3>스마트기기 예외 범위<br><span style="font-size:13px;color:var(--ink-2)">제103조</span></h3><p>교육목적·긴급·건강상 예외를 어디까지 인정할지, 수거·보관 방식은 어떻게 할지.</p></div>
+        <div class="card reveal"><h3>선거 시기·세부 위임<br><span style="font-size:13px;color:var(--ink-2)">제46조 등</span></h3><p>12월 선거 전환의 운영 방식, 봉사 기관 지정·동아리 운영 등 위임 범위를 어디까지 둘지.</p></div>
+      </div>
+      <p class="sub reveal" style="margin-top:22px">오늘 결론을 내지 않아도 됩니다. <b style="color:var(--ink)">의견을 수렴해 한 차례 더 다듬은 뒤</b> 다음 단계로 넘어가는 것을 제안드립니다.</p>
+    </div>
+  </section>
+
+  <!-- 15. 감사 -->
+  <section class="slide">
+    <div class="inner" style="text-align:center">
+      <div class="eyebrow reveal" style="justify-content:center">대구일중학교 생활안전부</div>
+      <h1 class="reveal" style="margin-bottom:20px">의견을 듣고 싶습니다</h1>
+      <p class="sub reveal" style="max-width:660px;margin:0 auto">큰 틀은 제안드린 대로 가되, 세부는 함께 다듬었으면 합니다.<br>이 안은 학생을 위한 규정으로, 예측가능성과 권리구제, 그리고 법령 부합을 함께 담으려 했습니다.</p>
+      <div class="cover-meta reveal" style="justify-content:center;margin-top:30px">
+        <span>붙임 <b>신설·삭제·수정 설명자료 1부</b></span>
+        <span><b>학생생활규정 전부개정 제안</b></span>
+      </div>
+    </div>
+  </section>
+
+</div>
+
+<div class="counter"><b id="cur">1</b> / <span id="total">15</span></div>
+<div class="nav">
+  <button id="prev" aria-label="이전">‹</button>
+  <button id="next" aria-label="다음">›</button>
+</div>
+<div class="brandfoot">학생생활규정 전부개정 제안</div>
+
+<script>
+  const slides=[...document.querySelectorAll('.slide')];
+  const total=slides.length;
+  let i=0;
+  document.getElementById('total').textContent=total;
+  const prog=document.getElementById('progress');
+  const cur=document.getElementById('cur');
+  const prev=document.getElementById('prev');
+  const next=document.getElementById('next');
+  const hint=document.getElementById('hint');
+
+  function counters(s){
+    s.querySelectorAll('.count').forEach(el=>{
+      const to=+el.dataset.to; const dur=900; const t0=performance.now();
+      function step(t){
+        const p=Math.min(1,(t-t0)/dur);
+        const e=1-Math.pow(1-p,3);
+        el.textContent=Math.round(to*e);
+        if(p<1)requestAnimationFrame(step);
+      }
+      el.textContent='0';requestAnimationFrame(step);
+    });
+  }
+  function go(n){
+    n=Math.max(0,Math.min(total-1,n));
+    if(n===i && slides[i].classList.contains('active'))return;
+    slides[i].classList.remove('active');
+    i=n;
+    const s=slides[i];
+    s.classList.add('active');
+    // restart reveal animations
+    s.querySelectorAll('.reveal').forEach(el=>{el.style.animation='none';el.offsetHeight;el.style.animation=''});
+    cur.textContent=i+1;
+    prog.style.width=((i+1)/total*100)+'%';
+    prev.disabled=i===0;next.disabled=i===total-1;
+    counters(s);
+  }
+  prev.onclick=e=>{e.stopPropagation();go(i-1)};
+  next.onclick=e=>{e.stopPropagation();go(i+1)};
+  document.addEventListener('keydown',e=>{
+    if(e.key==='ArrowRight'||e.key==='PageDown'||e.key===' '){e.preventDefault();go(i+1)}
+    else if(e.key==='ArrowLeft'||e.key==='PageUp'){e.preventDefault();go(i-1)}
+    else if(e.key==='Home'){go(0)} else if(e.key==='End'){go(total-1)}
+    else if(e.key==='f'||e.key==='F'){toggleFs()}
+  });
+  document.getElementById('deck').addEventListener('click',e=>{
+    if(e.target.closest('.nav')||e.target.closest('table')||e.target.closest('.qa'))return;
+    const x=e.clientX/window.innerWidth;
+    if(x>0.55)go(i+1); else if(x<0.45)go(i-1);
+  });
+  let sx=0;
+  addEventListener('touchstart',e=>sx=e.touches[0].clientX,{passive:true});
+  addEventListener('touchend',e=>{const dx=e.changedTouches[0].clientX-sx;if(Math.abs(dx)>50)go(i+(dx<0?1:-1))},{passive:true});
+  function toggleFs(){if(!document.fullscreenElement)document.documentElement.requestFullscreen();else document.exitFullscreen()}
+  setTimeout(()=>hint.style.opacity='0',4500);
+  prog.style.width=(1/total*100)+'%';
+  prev.disabled=true;
+  counters(slides[0]);
+</script>
+</body>
+</html>
